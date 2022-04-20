@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* THEME FOR CONTAINTER */
+.main_container_light {
+  @apply min-h-screen bg-white;
+}
+
+/* CONTAINER MARGIN */
+.sub_container {
+  @apply max-w-screen-xl mx-auto;
+}
+.sub_container_login {
+  @apply max-w-screen-sm mx-auto py-14;
+}
+
+/* DASHBOARD */
+.dashboard_container {
+  @apply grid md:grid-cols-4 my-5 mx-4 md:mx-0;
+}
+.aside {
+  @apply hidden md:block md:mx-1;
+}
+.side_nav_profile {
+  @apply mt-3 flex flex-col items-center;
+}
+.side_nav_name {
+  @apply text-center my-3;
+}
+.main_navigation {
+  @apply grid md:col-span-3 mx-1;
+}
+.dashboard_main_tab {
+  @apply my-3 px-3 h-14 flex justify-between items-center rounded-lg drop-shadow-md bg-white;
+}
+.dashboard_main_tab_title {
+  @apply font-bold;
+}

@@ -1,0 +1,101 @@
+/* GOOGLE FONT */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+/* COLOR THEME */
+:root {
+  --nav-top-color: #3182ce;
+}
+
+/* BODY */
+* {
+  font-family: "Roboto", sans-serif;
+  color: var(--nav-top-color);
+}
+
+/* LOGIN */
+.school_name {
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.login_form {
+  box-shadow: 0px 1px 5px rgb(210, 210, 210);
+  border-radius: 8px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  max-width: 23rem;
+}
+.login_form_input {
+  margin: 0.5rem 0;
+}
+.text_login {
+  padding: 0.5rem 0;
+  font-weight: bold;
+}
+.text_login_required {
+  margin: 2rem 0;
+  color: orange;
+  text-align: center;
+}
+
+/* DASHBOARD */
+.top_nav {
+  box-shadow: 0px 1px 5px rgb(210, 210, 210);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #fff;
+}
+
+/* == Top-Nav == */
+.top_nav_option {
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.3rem;
+}
+.nav_top_left {
+  font-weight: bold;
+  font-size: 1.5rem;
+  height: 100%;
+  align-items: center;
+  display: flex;
+}
+.nav_top_right {
+  display: flex;
+  justify-content: space-between;
+  width: 12rem;
+}
+
+/* == Main == */
+.main {
+  margin: 1.5rem 0;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 768px) {
+  /* LOGIN */
+  .school_name {
+    font-size: 1.8rem;
+  }
+
+  /* DASHBOARD */
+  .top_nav_option {
+    height: 3.5rem;
+    margin: 0 1rem;
+  }
+  .nav_top_left {
+    font-size: 1.3rem;
+  }
+  .nav_top_right {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav_top_right2 {
+    display: none;
+  }
+}
