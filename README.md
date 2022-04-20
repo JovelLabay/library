@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Getting Started with frontend and backend
+
+Follow the instructions and run the command for it to run locally.
+
+## BACKEND
+
+run this...
+
+## FRONTEND
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
