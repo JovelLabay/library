@@ -22,17 +22,12 @@ import {
 // ICONS
 import { BsChevronDown, BsList } from "react-icons/bs";
 
-import { ActiveBtn } from "../modules/interface";
-
-interface PropActiveBtn {
-  activeBtn: ActiveBtn;
-  setActiveBtn: React.Dispatch<React.SetStateAction<ActiveBtn>>;
-}
+import { ActiveBtn, PropActiveBtn2 } from "../modules/interface";
 
 export default function TopRightMenuCom({
   activeBtn,
   setActiveBtn,
-}: PropActiveBtn) {
+}: PropActiveBtn2) {
   // DRAWER
   const [drawer, setDrawer] = React.useState(false);
 

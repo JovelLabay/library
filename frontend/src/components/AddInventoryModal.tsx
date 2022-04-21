@@ -2,6 +2,10 @@ import React from "react";
 
 import {
   Button,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -27,7 +31,21 @@ export default function AddInventoryModal(props: AddInventoryModalInterface) {
           {addInventoryModal.inventoryName}
         </ModalHeader>
         <ModalCloseButton />
-        <ModalBody>sdfsdfsd</ModalBody>
+
+        <ModalBody>
+          <FormControl>
+            <FormLabel htmlFor="email">Book Title</FormLabel>
+            <Input id="text " type="text" />
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="email">Book ISBN</FormLabel>
+            <Input id="number" type="number" />
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="email">Book Number</FormLabel>
+            <Input id="number" type="number" />
+          </FormControl>
+        </ModalBody>
 
         <ModalFooter>
           <Button variant="ghost">Secondary Action</Button>

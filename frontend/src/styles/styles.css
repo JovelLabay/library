@@ -20,7 +20,7 @@
   @apply grid md:grid-cols-4 my-5 mx-4 md:mx-0;
 }
 .aside {
-  @apply hidden md:block md:mx-1;
+  @apply hidden md:block md:mx-1 md:my-3 rounded-lg h-full bg-white drop-shadow-md;
 }
 .side_nav_profile {
   @apply mt-3 flex flex-col items-center;

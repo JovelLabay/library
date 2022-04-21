@@ -24,15 +24,12 @@ import {
   BsCardChecklist,
 } from "react-icons/bs";
 
-import { Inventorybtns, InventoryName } from "../modules/interface";
+import {
+  Inventorybtns,
+  InventoryName,
+  PropActiveBtn,
+} from "../modules/interface";
 import AddInventoryModal from "./AddInventoryModal";
-
-interface PropActiveBtn {
-  activeBtn: ActiveBtn;
-  setActiveBtn: React.Dispatch<React.SetStateAction<ActiveBtn>>;
-  activeTable: string;
-  setActiveTable: React.Dispatch<React.SetStateAction<string>>;
-}
 
 export default function DashboardMainTabCom({
   activeBtn,

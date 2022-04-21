@@ -1,13 +1,6 @@
 import React from "react";
 
-import { ActiveBtn } from "../modules/interface";
-
-interface PropActiveBtn {
-  activeBtn: ActiveBtn;
-  setActiveBtn: React.Dispatch<React.SetStateAction<ActiveBtn>>;
-  activeTable: string;
-  setActiveTable: React.Dispatch<React.SetStateAction<string>>;
-}
+import { ActiveBtn, PropActiveBtn } from "../modules/interface";
 
 export default function DashboardMainTableCom({
   activeBtn,

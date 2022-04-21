@@ -4,6 +4,15 @@ export interface ActiveBtn {
   removeBtn?: boolean;
 }
 
+export interface PropActiveBtn2 {
+  activeBtn: ActiveBtn;
+  setActiveBtn: React.Dispatch<React.SetStateAction<ActiveBtn>>;
+}
+export interface PropActiveBtn extends PropActiveBtn2 {
+  activeTable: string;
+  setActiveTable: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export type InventoryName = {
   modal: boolean;
   inventoryName?: string;

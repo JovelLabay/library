@@ -19,14 +19,9 @@ import logo from "../imgs/logo/schoolLogo.jpg";
 import text from "../modules/text.json";
 import TopRightMenuCom from "../components/TopRightMenuCom";
 
-import { ActiveBtn } from "../modules/interface";
+import { ActiveBtn, PropActiveBtn2 } from "../modules/interface";
 
-interface PropActiveBtn {
-  activeBtn: ActiveBtn;
-  setActiveBtn: React.Dispatch<React.SetStateAction<ActiveBtn>>;
-}
-
-export default function TopNavCom({ activeBtn, setActiveBtn }: PropActiveBtn) {
+export default function TopNavCom({ activeBtn, setActiveBtn }: PropActiveBtn2) {
   return (
     <div className="sub_container top_nav_option">
       {/* LEFT */}

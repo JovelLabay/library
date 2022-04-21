@@ -20,14 +20,12 @@ import {
   Center,
 } from "@chakra-ui/react";
 
-import { ActiveBtn } from "../modules/interface";
+import { ActiveBtn, PropActiveBtn2 } from "../modules/interface";
 
-interface PropActiveBtn {
-  activeBtn: ActiveBtn;
-  setActiveBtn: React.Dispatch<React.SetStateAction<ActiveBtn>>;
-}
-
-export default function SideNavCom({ activeBtn, setActiveBtn }: PropActiveBtn) {
+export default function SideNavCom({
+  activeBtn,
+  setActiveBtn,
+}: PropActiveBtn2) {
   // STATE OF THE BUTTONS
   const { addBtn, editBtn, removeBtn } = activeBtn;
   return (
