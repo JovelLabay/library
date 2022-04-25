@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 
 import { ActiveBtn, PropActiveBtn2 } from "../modules/interface";
+import LeftRightMenus from "../components/LeftRightMenus";
 
 export default function SideNavCom({
   activeBtn,
@@ -29,7 +30,7 @@ export default function SideNavCom({
   // STATE OF THE BUTTONS
   const { addBtn, editBtn, removeBtn } = activeBtn;
   return (
-    <VStack spacing={4}>
+    <VStack spacing={4} marginRight="2rem" marginLeft="2rem">
       <div className="side_nav_profile">
         <Avatar
           size="lg"
@@ -38,58 +39,7 @@ export default function SideNavCom({
         />
         <h1 className="side_nav_name">dffdssd sngdfg</h1>
       </div>
-      <Button
-        isActive={addBtn}
-        width="80%"
-        variant="outline"
-        colorScheme="green"
-        onClick={() =>
-          setActiveBtn({
-            addBtn: true,
-            editBtn: false,
-            removeBtn: false,
-          })
-        }
-      >
-        Add Inventory
-      </Button>
-      <Button
-        isActive={editBtn}
-        width="80%"
-        variant="outline"
-        colorScheme="yellow"
-        onClick={() =>
-          setActiveBtn({
-            addBtn: false,
-            editBtn: true,
-            removeBtn: false,
-          })
-        }
-      >
-        Edit Inventory
-      </Button>
-      <Button
-        isActive={removeBtn}
-        width="80%"
-        variant="outline"
-        colorScheme="red"
-        onClick={() =>
-          setActiveBtn({
-            addBtn: false,
-            editBtn: false,
-            removeBtn: true,
-          })
-        }
-      >
-        Remove Inventory
-      </Button>
-      <Divider />
-      <Button width="80%" variant="solid" colorScheme="facebook">
-        Book Status
-      </Button>
-      <Button width="80%" variant="solid" colorScheme="facebook">
-        Student List
-      </Button>
+      <LeftRightMenus activeBtn={activeBtn} setActiveBtn={setActiveBtn} />
     </VStack>
   );
 }

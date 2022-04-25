@@ -4,6 +4,16 @@ export interface ActiveBtn {
   removeBtn?: boolean;
 }
 
+export interface ListModal {
+  bookList: boolean;
+  studentList?: boolean;
+}
+
+export interface PropActiveBtn3 {
+  modal: ListModal;
+  setModal: React.Dispatch<React.SetStateAction<ListModal>>;
+}
+
 export interface PropActiveBtn2 {
   activeBtn: ActiveBtn;
   setActiveBtn: React.Dispatch<React.SetStateAction<ActiveBtn>>;

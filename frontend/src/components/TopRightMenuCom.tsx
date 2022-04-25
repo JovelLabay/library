@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // CHAKRA UI
 import {
@@ -22,7 +22,9 @@ import {
 // ICONS
 import { BsChevronDown, BsList } from "react-icons/bs";
 
-import { ActiveBtn, PropActiveBtn2 } from "../modules/interface";
+import { ActiveBtn, PropActiveBtn2, ListModal } from "../modules/interface";
+import LeftRightMenus from "./LeftRightMenus";
+import ModalList from "./ModalList";
 
 export default function TopRightMenuCom({
   activeBtn,
@@ -30,9 +32,6 @@ export default function TopRightMenuCom({
 }: PropActiveBtn2) {
   // DRAWER
   const [drawer, setDrawer] = React.useState(false);
-
-  // STATE OF THE BUTTONS
-  const { addBtn, editBtn, removeBtn } = activeBtn;
 
   return (
     <>
@@ -67,72 +66,7 @@ export default function TopRightMenuCom({
           <DrawerHeader>Library Menu</DrawerHeader>
 
           <DrawerBody>
-            <Button
-              isActive={addBtn}
-              width="100%"
-              variant="outline"
-              colorScheme="green"
-              marginBottom="1rem"
-              onClick={() =>
-                setActiveBtn({
-                  addBtn: true,
-                  editBtn: false,
-                  removeBtn: false,
-                })
-              }
-            >
-              Add Inventory
-            </Button>
-            <Button
-              isActive={editBtn}
-              width="100%"
-              variant="outline"
-              colorScheme="yellow"
-              marginBottom="1rem"
-              onClick={() =>
-                setActiveBtn({
-                  addBtn: false,
-                  editBtn: true,
-                  removeBtn: false,
-                })
-              }
-            >
-              Edit Inventory
-            </Button>
-            <Button
-              isActive={removeBtn}
-              width="100%"
-              variant="outline"
-              colorScheme="red"
-              marginBottom="1rem"
-              onClick={() =>
-                setActiveBtn({
-                  addBtn: false,
-                  editBtn: false,
-                  removeBtn: true,
-                })
-              }
-            >
-              Remove Inventory
-            </Button>
-            <Divider />
-            <Button
-              width="100%"
-              variant="solid"
-              colorScheme="facebook"
-              marginBottom="1rem"
-              marginTop="1rem"
-            >
-              Book Status
-            </Button>
-            <Button
-              width="100%"
-              variant="solid"
-              colorScheme="facebook"
-              marginBottom="1rem"
-            >
-              Student List
-            </Button>
+            <LeftRightMenus activeBtn={activeBtn} setActiveBtn={setActiveBtn} />
           </DrawerBody>
 
           <DrawerFooter>

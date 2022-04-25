@@ -34,21 +34,25 @@ export default function AddInventoryModal(props: AddInventoryModalInterface) {
 
         <ModalBody>
           <FormControl>
-            <FormLabel htmlFor="email">Book Title</FormLabel>
+            <FormLabel htmlFor="email">Book Title:</FormLabel>
             <Input id="text " type="text" />
           </FormControl>
           <FormControl>
-            <FormLabel htmlFor="email">Book ISBN</FormLabel>
+            <FormLabel htmlFor="email">Book ISBN:</FormLabel>
             <Input id="number" type="number" />
           </FormControl>
           <FormControl>
-            <FormLabel htmlFor="email">Book Number</FormLabel>
+            <FormLabel htmlFor="email">Book Number:</FormLabel>
+            <Input id="number" type="number" />
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="email">Book Quantity:</FormLabel>
             <Input id="number" type="number" />
           </FormControl>
         </ModalBody>
 
         <ModalFooter>
-          <Button variant="ghost">Secondary Action</Button>
+          <Button variant="outline">Secondary Action</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
