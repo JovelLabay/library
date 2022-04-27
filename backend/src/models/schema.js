@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const { triggerAsyncId } = require("async_hooks");
 
 // USERNAME AND PASSWORD SCHEMA TYPES
 const userName = { type: String, required: true, unique: true };
@@ -23,7 +24,38 @@ userAuthSign.pre("save", async function (next) {
   next();
 });
 
+// SECTION LIBRARY SCHEMA TYPES
+const section = { type: String, required: true };
+const quantity = { type: Number, required: true };
+const title = { type: String, required: true };
+const isbn = { type: Number, required: true, unique: true };
+const bookNo = { type: Number, required: true };
+const datePublished = { type: String, required: true };
+
+const LibrarySection = new mongoose.Schema({
+  section,
+  quantity,
+  title,
+  isbn,
+  bookNo,
+  datePublished,
+});
+
 // MODELS
 const authentication = mongoose.model("auth", userAuthSign);
 
-module.exports = { authentication };
+// MODALES FOR THE LIBRARY SECTION
+const journalsMagazine = mongoose.model("journalsmagazine", LibrarySection);
+const newspapers = mongoose.model("newspaper", LibrarySection);
+const readingBooks = mongoose.model("readingBook", LibrarySection);
+const referenceBooks = mongoose.model("referenceBook", LibrarySection);
+const textBooks = mongoose.model("textBook", LibrarySection);
+
+module.exports = {
+  authentication,
+  journalsMagazine,
+  newspapers,
+  readingBooks,
+  referenceBooks,
+  textBooks,
+};

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 // CHAKRA UI
 import {
   Menu,
@@ -33,13 +35,19 @@ export default function TopRightMenuCom({
   // DRAWER
   const [drawer, setDrawer] = React.useState(false);
 
+  const navigation = useNavigate();
+  const logout = () => {
+    sessionStorage.clear();
+    navigation("/");
+  };
+
   return (
     <>
       <div className="nav_top_right">
         <Button variant="ghost" size="sm">
           Create Admin
         </Button>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" onClick={logout}>
           Logout
         </Button>
       </div>
@@ -84,6 +92,7 @@ export default function TopRightMenuCom({
                 variant="outline"
                 colorScheme="blue"
                 marginBottom="0.5rem"
+                onClick={logout}
               >
                 Logout
               </Button>

@@ -13,57 +13,57 @@ export default function LeftRightMenus({
     studentList: false,
   });
 
-  const { addBtn, editBtn, removeBtn } = activeBtn;
+  const { inventory, bookStatus, studentList } = activeBtn;
 
   return (
     <>
       <Button
-        isActive={addBtn}
-        width="100%"
-        variant="outline"
-        colorScheme="green"
-        marginBottom="1rem"
-        onClick={() =>
-          setActiveBtn({
-            addBtn: true,
-            editBtn: false,
-            removeBtn: false,
-          })
-        }
-      >
-        Add Inventory
-      </Button>
-      <Button
-        isActive={editBtn}
-        width="100%"
-        variant="outline"
-        colorScheme="yellow"
-        marginBottom="1rem"
-        onClick={() =>
-          setActiveBtn({
-            addBtn: false,
-            editBtn: true,
-            removeBtn: false,
-          })
-        }
-      >
-        Edit Inventory
-      </Button>
-      <Button
-        isActive={removeBtn}
+        isActive={inventory}
         width="100%"
         variant="outline"
         colorScheme="red"
         marginBottom="1rem"
         onClick={() =>
           setActiveBtn({
-            addBtn: false,
-            editBtn: false,
-            removeBtn: true,
+            inventory: true,
+            bookStatus: false,
+            studentList: false,
           })
         }
       >
-        Remove Inventory
+        Inventory
+      </Button>
+      <Button
+        isActive={bookStatus}
+        width="100%"
+        variant="outline"
+        colorScheme="green"
+        marginBottom="1rem"
+        onClick={() =>
+          setActiveBtn({
+            inventory: false,
+            bookStatus: true,
+            studentList: false,
+          })
+        }
+      >
+        Book Status
+      </Button>
+      <Button
+        isActive={studentList}
+        width="100%"
+        variant="outline"
+        colorScheme="yellow"
+        marginBottom="1rem"
+        onClick={() =>
+          setActiveBtn({
+            inventory: false,
+            bookStatus: false,
+            studentList: true,
+          })
+        }
+      >
+        Student Status
       </Button>
       <Divider />
       <Button
@@ -71,18 +71,8 @@ export default function LeftRightMenus({
         variant="solid"
         colorScheme="facebook"
         marginBottom="1rem"
-        marginTop="1rem"
-        onClick={() => setModal({ bookList: true })}
       >
-        Book Status
-      </Button>
-      <Button
-        width="100%"
-        variant="solid"
-        colorScheme="facebook"
-        marginBottom="1rem"
-      >
-        Student List
+        Add Humans
       </Button>
 
       {/* LIST MODAL */}

@@ -28,9 +28,9 @@ export default function SideNavCom({
   setActiveBtn,
 }: PropActiveBtn2) {
   // STATE OF THE BUTTONS
-  const { addBtn, editBtn, removeBtn } = activeBtn;
+  const { inventory, bookStatus, studentList } = activeBtn;
   return (
-    <VStack spacing={4} marginRight="2rem" marginLeft="2rem">
+    <VStack spacing={4} marginRight="1rem" marginLeft="1rem">
       <div className="side_nav_profile">
         <Avatar
           size="lg"

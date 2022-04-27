@@ -99,3 +99,57 @@
     display: none;
   }
 }
+
+/* LOADERS */
+.loader {
+  min-height: 100vh;
+  width: 30rem;
+  margin: 0 auto;
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loading {
+  margin-top: 10rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: dodgerblue;
+  border-radius: 50px;
+  animation: animating 1s infinite ease;
+}
+.loading2 {
+  margin-top: 10rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: dodgerblue;
+  border-radius: 50px;
+  animation: animating 1.5s infinite ease;
+}
+.loading3 {
+  margin-top: 10rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: dodgerblue;
+  border-radius: 50px;
+  animation: animating 2s infinite ease;
+}
+
+@keyframes animating {
+  0% {
+    transform: rotate(90deg) scale(0.5);
+  }
+  25% {
+    transform: rotate(90deg) scale(0.8);
+  }
+  50% {
+    transform: rotate(90deg) scale(1);
+  }
+  75% {
+    transform: rotate(90deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(90deg) scale(0.5);
+  }
+}

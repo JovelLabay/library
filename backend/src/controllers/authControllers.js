@@ -33,7 +33,10 @@ const log_in = async (req, res) => {
         },
         "SeCrEt_15728"
       );
-      res.json({ token: serverToken });
+      res.json({
+        token: serverToken,
+        message: "Account authentication successfull",
+      });
     } else {
       res.json({ message: "Invalid either username or password" });
     }

@@ -2,9 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParse = require("body-parser");
 const cors = require("cors");
+const os = require("os");
 
 // ROUTES
 const authRoutes = require("./src/routes/authRoutes");
+const inventoryRoutes = require("./src/routes/inventoryRoutes");
+const getInventoryRoutes = require("./src/routes/getInventoryRoutes");
 
 // ENV
 require("dotenv").config();
@@ -24,12 +27,17 @@ mongoose
   .connect(process.env.MONGODB_STRING_CONNECTION)
   .then((res) => {
     app.listen(port, () => {
-      console.log(res, { message: `The server is running on port ${port}` });
+      console.log(res, {
+        runningServer: `The server is running on port ${port}`,
+        computerMemory: os.freemem(),
+        computerArch: os.arch(),
+        computer: os.release(),
+      });
     });
   })
   .catch((e) => {
-    console.log(e, { message: `The database server is down on ${port}` });
+    console.log(e, { runningServer: `The database server is down on ${port}` });
   });
 
 // ROUTER
-app.use(authRoutes);
+app.use(authRoutes, inventoryRoutes, getInventoryRoutes);
