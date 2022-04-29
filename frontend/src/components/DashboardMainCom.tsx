@@ -63,15 +63,18 @@ export default function DashboardMainCom({
       setAddNotice(true);
     } else {
       setAddBtn("Uploading...");
-      axios
-        .post("/api/add-inventory", {
+      axios({
+        method: "post",
+        url: "/api/add-inventory",
+        data: {
           section: addSection,
           quantity: addQuantity,
           title: addBook,
           isbn: addIsbn,
           bookNo: addNumber,
           datePublished: addDatePublished,
-        })
+        },
+      })
         .then(function (response) {
           getSectionData();
           console.log(response.data);

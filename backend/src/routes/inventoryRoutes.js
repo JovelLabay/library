@@ -1,5 +1,8 @@
 const { Router } = require("express");
 
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+
 // MIDDLEWARE
 const router = Router();
 
@@ -7,7 +10,11 @@ const router = Router();
 const SectionController = require("../controllers/sectionController");
 
 // ROUTES AND ENDPOINT
-router.post("/api/add-inventory", SectionController.inventory);
+router.post(
+  "/api/add-inventory",
+  upload.single("avatar"),
+  SectionController.inventory
+);
 
 // EXPORTS THE ROUTER
 module.exports = router;
