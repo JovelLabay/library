@@ -2,14 +2,17 @@ import React, { useState } from "react";
 
 import {
   Alert,
+  background,
   Box,
   Button,
   Divider,
+  Editable,
   FormControl,
   FormHelperText,
   FormLabel,
   HStack,
   IconButton,
+  Image,
   Input,
   Menu,
   MenuButton,
@@ -53,6 +56,8 @@ import {
   AiOutlineSelect,
 } from "react-icons/ai";
 
+import bookSelf from "../assets/addModal_image/book_shelf.jpg";
+
 export default function AddInventoryModal(props: AddInventoryModalInterface) {
   const {
     addInventoryModal,
@@ -67,30 +72,34 @@ export default function AddInventoryModal(props: AddInventoryModalInterface) {
     setAddBook,
     addIsbn,
     setAddIsbn,
-    addNumber,
-    setAddNumber,
+    author,
+    setAuthor,
     addDatePublished,
     setAddDatePublished,
     addNotice,
     addBtn,
   } = props;
 
-  // TOAST
-  const toast = useToast();
-
   return (
     <Modal
       isOpen={addInventoryModal}
       onClose={() => setAddInventoryModal(false)}
+      size="xl"
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Add Section to Inventory</ModalHeader>
-        <ModalCloseButton />
+        <ModalHeader>
+          <div className="modalImage addImage">
+            <h1 className="bg-white absolute top-5 left-7 px-2 py-1 rounded">
+              Add Section to Inventory
+            </h1>
+          </div>
+        </ModalHeader>
+        <ModalCloseButton backgroundColor="white" />
 
         <ModalBody>
           {/* SECTION AND PIECES */}
-          <HStack marginBottom="2" justifyContent="space-between">
+          <HStack marginBottom="1" justifyContent="space-between">
             <div>
               <FormLabel htmlFor="email">Library Section</FormLabel>
               <Menu>
@@ -160,6 +169,7 @@ export default function AddInventoryModal(props: AddInventoryModalInterface) {
           <FormControl>
             <FormLabel htmlFor="email">Book Title:</FormLabel>
             <Input
+              placeholder="Enter book Title"
               id="text "
               type="text"
               value={addBook}
@@ -169,6 +179,7 @@ export default function AddInventoryModal(props: AddInventoryModalInterface) {
           <FormControl>
             <FormLabel htmlFor="email">Book ISBN:</FormLabel>
             <Input
+              placeholder="Enter book isbn"
               id="number"
               type="number"
               value={addIsbn}
@@ -176,17 +187,19 @@ export default function AddInventoryModal(props: AddInventoryModalInterface) {
             />
           </FormControl>
           <FormControl>
-            <FormLabel htmlFor="email">Book Number:</FormLabel>
+            <FormLabel htmlFor="email">Book Author:</FormLabel>
             <Input
-              id="number"
-              type="number"
-              value={addNumber}
-              onChange={(e) => setAddNumber(e.target.valueAsNumber)}
+              placeholder="Enter book author"
+              id="text"
+              type="text"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
             />
           </FormControl>
           <FormControl>
             <FormLabel htmlFor="email">Date Published:</FormLabel>
             <Input
+              placeholder="Enter book published"
               id="date"
               type="date"
               value={addDatePublished}

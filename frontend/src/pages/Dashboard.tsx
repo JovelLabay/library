@@ -7,6 +7,7 @@ import MainCom from "../layouts/MainCom";
 import { ActiveBtn } from "../modules/interface";
 import { useNavigate } from "react-router-dom";
 import Loader from "../layouts/Loader";
+import AddAdmin from "../layouts/AddAdmin";
 
 export default function Dashboard() {
   const navigation = useNavigate();

@@ -27,6 +27,7 @@ import { BsChevronDown, BsList } from "react-icons/bs";
 import { ActiveBtn, PropActiveBtn2, ListModal } from "../modules/interface";
 import LeftRightMenus from "./LeftRightMenus";
 import ModalList from "./ModalList";
+import AddAdmin from "../layouts/AddAdmin";
 
 export default function TopRightMenuCom({
   activeBtn,
@@ -41,10 +42,13 @@ export default function TopRightMenuCom({
     navigation("/");
   };
 
+  // ADD ADMIN STATE HANDLER
+  const [addAdmin, setAddAdmin] = useState(false);
+
   return (
     <>
       <div className="nav_top_right">
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" onClick={() => setAddAdmin(true)}>
           Create Admin
         </Button>
         <Button variant="ghost" size="sm" onClick={logout}>
@@ -100,6 +104,9 @@ export default function TopRightMenuCom({
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
+
+      {/* ADD ADMIN MODAL */}
+      <AddAdmin addAdmin={addAdmin} setAddAdmin={setAddAdmin} />
     </>
   );
 }

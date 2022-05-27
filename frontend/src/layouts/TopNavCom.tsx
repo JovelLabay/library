@@ -13,13 +13,14 @@ import {
 } from "@chakra-ui/react";
 
 // LOGO
-import logo from "../imgs/logo/schoolLogo.jpg";
+import logo from "../assets/logo/schoolLogo.jpg";
 
 // STATIC TEXT
 import text from "../modules/text.json";
 import TopRightMenuCom from "../components/TopRightMenuCom";
 
 import { ActiveBtn, PropActiveBtn2 } from "../modules/interface";
+import AddAdmin from "./AddAdmin";
 
 export default function TopNavCom({ activeBtn, setActiveBtn }: PropActiveBtn2) {
   return (
@@ -36,6 +37,7 @@ export default function TopNavCom({ activeBtn, setActiveBtn }: PropActiveBtn2) {
 
         <h1>{text.topNavTitle}</h1>
       </div>
+
       {/* RIGHT */}
       <TopRightMenuCom activeBtn={activeBtn} setActiveBtn={setActiveBtn} />
     </div>

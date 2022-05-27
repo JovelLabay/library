@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   VStack,
   Menu,
@@ -29,15 +29,35 @@ export default function SideNavCom({
 }: PropActiveBtn2) {
   // STATE OF THE BUTTONS
   const { inventory, bookStatus, studentList } = activeBtn;
+
+  interface Kulira {
+    fullname: string | null;
+    position: string | null;
+  }
+
+  const [adminDetails, setAdminDetails] = useState<Kulira>({
+    fullname: "",
+    position: "",
+  });
+
+  const [avatar, setAvatar] = useState<any>("");
+
+  const fullD = sessionStorage.getItem("Fullname");
+  const posiG = sessionStorage.getItem("Position");
+  useEffect(() => {
+    setAdminDetails({
+      fullname: fullD,
+      position: posiG,
+    });
+    setAvatar(fullD);
+  }, []);
+
   return (
     <VStack spacing={4} marginRight="1rem" marginLeft="1rem">
       <div className="side_nav_profile">
-        <Avatar
-          size="lg"
-          name="Kola Tioluwani"
-          src="https://bit.ly/tioluwani-kolawole"
-        />
-        <h1 className="side_nav_name">dffdssd sngdfg</h1>
+        <Avatar marginBottom="1rem" size="lg" name={avatar} />
+        <p className="side_nav_name">{adminDetails.fullname}</p>
+        <p className="side_nav_name2">{adminDetails.position}</p>
       </div>
       <LeftRightMenus activeBtn={activeBtn} setActiveBtn={setActiveBtn} />
     </VStack>

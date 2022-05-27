@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 
 // LOGO
-import logo from "../imgs/logo/schoolLogo.jpg";
+import logo from "../assets/logo/schoolLogo.jpg";
 import { UsernamePassword } from "../modules/interface";
 import Loader from "../layouts/Loader";
 
@@ -55,9 +55,11 @@ export default function Login() {
         password,
       })
       .then((response) => {
-        const { token, message } = response.data;
+        const { token, message, fullname, position } = response.data;
         if (token) {
           sessionStorage.setItem("Server Token", token);
+          sessionStorage.setItem("Fullname", fullname);
+          sessionStorage.setItem("Position", position);
           alert(message);
           navigation("/admin-dashboard");
           setAuthErr({ isValid: false, btnStatus: "Login" });

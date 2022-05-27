@@ -1,0 +1,10 @@
+.yearLevel {
+  @apply w-full p-2 grid grid-cols-3 gap-2;
+}
+
+.gradeBtn {
+  @apply flex justify-start items-center rounded-lg h-16 border-2;
+}
+.gradeBtn:hover {
+  @apply bg-slate-50;
+}

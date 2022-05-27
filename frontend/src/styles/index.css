@@ -153,3 +153,32 @@
     transform: rotate(90deg) scale(0.5);
   }
 }
+
+/* ADD MODAL STYLES */
+.modalImage {
+  border-radius: 5px;
+  height: 10rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.addImage {
+  background-image: url("../assets/addModal_image/book_shelf.jpg");
+}
+
+/* DYNAMIC TABLES  */
+.jm_Image {
+  background-image: url("../assets/addModal_image/journalsmagazines.jpg");
+}
+.np_Image {
+  background-image: url("../assets/addModal_image/newspapers.jpg");
+}
+.rb_Image {
+  background-image: url("../assets/addModal_image/readingbooks.jpg");
+}
+.rf_Image {
+  background-image: url("../assets/addModal_image/referenceSection.jpg");
+}
+.rf_Image {
+  background-image: url("../assets/addModal_image/textbooks.jpg");
+}

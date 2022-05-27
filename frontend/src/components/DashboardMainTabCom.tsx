@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ActiveBtn } from "../modules/interface";
 
@@ -14,6 +14,9 @@ import {
   Input,
   IconButton,
   Tooltip,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
 } from "@chakra-ui/react";
 
 // ICONS
@@ -44,6 +47,9 @@ export default function DashboardMainTabCom({
   activeTable,
   setActiveTable,
   addInventory,
+  sectionList,
+  setSectionList,
+  getSectionData,
   // USESTATE PROPS
   addSection,
   setAddSection,
@@ -53,13 +59,31 @@ export default function DashboardMainTabCom({
   setAddBook,
   addIsbn,
   setAddIsbn,
-  addNumber,
-  setAddNumber,
+  author,
+  setAuthor,
   addDatePublished,
   setAddDatePublished,
   addNotice,
   addBtn,
+  // RETURN AND BORROW
+  rbIcons,
+  setRbIcons,
 }: PropActiveBtn4) {
+  // HANDLE SEARCH
+  const [search, setSearch] = useState<number | undefined>();
+
+  useEffect(() => {
+    const lala = sectionList.filter((title) => {
+      return title.isbn === search;
+    });
+    if (lala.length >= 1) {
+      setSectionList(lala);
+    }
+    if (lala.length <= 0) {
+      getSectionData();
+    }
+  }, [search]);
+
   // STATE OF THE BUTTONS
   const { inventory, bookStatus, studentList } = activeBtn;
 
@@ -80,8 +104,8 @@ export default function DashboardMainTabCom({
     setAddBook,
     addIsbn,
     setAddIsbn,
-    addNumber,
-    setAddNumber,
+    author,
+    setAuthor,
     addDatePublished,
     setAddDatePublished,
     addNotice,
@@ -90,6 +114,7 @@ export default function DashboardMainTabCom({
 
   return (
     <div className="dashboard_main_tab">
+      {/* TITLE */}
       <HStack divider={<StackDivider borderColor="gray.200" />}>
         <h1 className="dashboard_main_tab_title">
           {inventory === true
@@ -104,6 +129,8 @@ export default function DashboardMainTabCom({
           {studentList === true ? "Student List" : activeTable}
         </h1>
       </HStack>
+
+      {/* ICON BTNS */}
       <HStack spacing="1rem">
         {/* SELECT LIBRARY SECTION */}
         {studentList !== true ? (
@@ -162,6 +189,12 @@ export default function DashboardMainTabCom({
           <>
             <Tooltip label="Borrow Book">
               <IconButton
+                onClick={() =>
+                  setRbIcons({
+                    borrow: true,
+                    returnMe: false,
+                  })
+                }
                 colorScheme="blue"
                 aria-label="Search database"
                 variant="outline"
@@ -171,6 +204,12 @@ export default function DashboardMainTabCom({
             </Tooltip>
             <Tooltip label="Return book">
               <IconButton
+                onClick={() =>
+                  setRbIcons({
+                    borrow: false,
+                    returnMe: true,
+                  })
+                }
                 colorScheme="blue"
                 aria-label="Search database"
                 variant="outline"
@@ -182,7 +221,14 @@ export default function DashboardMainTabCom({
         )}
 
         {/* SEARCH DIRECT TO THE LIBRARY SECTION */}
-        <Input placeholder="Search here..." />
+        {studentList === false ? (
+          <Input
+            type="number"
+            placeholder="Search ISBN here..."
+            value={search}
+            onChange={(e) => setSearch(e.target.valueAsNumber)}
+          />
+        ) : null}
       </HStack>
 
       {/* ADD INVENTORY MODAL */}

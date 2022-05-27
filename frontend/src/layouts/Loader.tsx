@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "../imgs/logo/schoolLogo.jpg";
+import logo from "../assets/logo/schoolLogo.jpg";
 
 import {
   Center,

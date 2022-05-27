@@ -52,9 +52,9 @@ export default function DashboardMainCom({
   const [addQuantity, setAddQuantity] = useState(0);
   const [addBook, setAddBook] = useState("");
   const [addIsbn, setAddIsbn] = useState(0);
-  const [addNumber, setAddNumber] = useState(0);
+  const [author, setAuthor] = useState("");
   const [addDatePublished, setAddDatePublished] = useState("");
-  const [addBtn, setAddBtn] = useState("Upload");
+  const [addBtn, setAddBtn] = useState("Upload Book");
   const [addNotice, setAddNotice] = useState(false);
 
   //  ADD INVENTORY TO SERVER | HTTP REQUEST
@@ -71,30 +71,48 @@ export default function DashboardMainCom({
           quantity: addQuantity,
           title: addBook,
           isbn: addIsbn,
-          bookNo: addNumber,
+          author: author,
           datePublished: addDatePublished,
         },
       })
         .then(function (response) {
           getSectionData();
-          console.log(response.data);
           setAddSection("Select");
           setAddQuantity(0);
           setAddBook("");
           setAddIsbn(0);
-          setAddNumber(0);
+          setAuthor("");
           setAddDatePublished("");
-          setAddBtn("Upload");
+          setAddBtn("Upload Book");
           setAddNotice(false);
-          toast({
-            position: "bottom-right",
-            variant: "subtle",
-            title: "Account created.",
-            description: "We've created your account for you.",
-            status: "success",
-            duration: 2000,
-            isClosable: true,
-          });
+
+          if (response.data._message === undefined) {
+            toast({
+              position: "bottom-right",
+              variant: "subtle",
+              title: "Added Successfully",
+              description: "Book has been added successfully",
+              status: "success",
+              duration: 3000,
+              isClosable: true,
+              containerStyle: {
+                marginBottom: "1.5rem",
+              },
+            });
+          } else {
+            toast({
+              position: "bottom-right",
+              variant: "subtle",
+              title: `${response.data._message}.`,
+              description: "All field is required to submit book information",
+              status: "error",
+              duration: 3000,
+              isClosable: true,
+              containerStyle: {
+                marginBottom: "1.5rem",
+              },
+            });
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -103,6 +121,12 @@ export default function DashboardMainCom({
     }
   };
 
+  // RETURN AND BORROW ICONS
+  const [rbIcons, setRbIcons] = useState({
+    borrow: true,
+    returnMe: false,
+  });
+
   // props
   const props = {
     activeBtn,
@@ -110,6 +134,9 @@ export default function DashboardMainCom({
     activeTable,
     setActiveTable,
     addInventory,
+    sectionList,
+    setSectionList,
+    getSectionData,
     // USESTATE PROPS
     addSection,
     setAddSection,
@@ -119,13 +146,16 @@ export default function DashboardMainCom({
     setAddBook,
     addIsbn,
     setAddIsbn,
-    addNumber,
-    setAddNumber,
+    author,
+    setAuthor,
     addDatePublished,
     setAddDatePublished,
     addNotice,
     // BTN UPLOAD
     addBtn,
+    // RETURN AND BORROW
+    rbIcons,
+    setRbIcons,
   };
   const props2 = {
     activeBtn,
@@ -133,6 +163,23 @@ export default function DashboardMainCom({
     activeTable,
     setActiveTable,
     sectionList,
+    // USESTATE PROPS
+    addSection,
+    setAddSection,
+    addQuantity,
+    setAddQuantity,
+    addBook,
+    setAddBook,
+    addIsbn,
+    setAddIsbn,
+    author,
+    setAuthor,
+    addDatePublished,
+    setAddDatePublished,
+    getSectionData,
+    // RETURN AND BORROW
+    rbIcons,
+    setRbIcons,
   };
 
   return (

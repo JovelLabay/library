@@ -26,7 +26,10 @@
   @apply flex flex-col items-center;
 }
 .side_nav_name {
-  @apply text-center my-3;
+  @apply text-center font-bold text-lg;
+}
+.side_nav_name2 {
+  @apply text-center font-light text-blue-400;
 }
 .main_navigation {
   @apply grid md:col-span-4 mx-1 ml-2;

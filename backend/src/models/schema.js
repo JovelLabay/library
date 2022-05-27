@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const { triggerAsyncId } = require("async_hooks");
 
 // USERNAME AND PASSWORD SCHEMA TYPES
 const userName = { type: String, required: true, unique: true };
@@ -10,11 +9,17 @@ const passWord = {
   minLength: [6, "Must be at leaset 6 characters"],
   maxLength: [12, "Password should not exced more than 12 characters"],
 };
+const firstName = { type: String, required: true };
+const lastName = { type: String, required: true };
+const position = { type: String, required: false };
 
 // ADMIN SIGNIN AND LOGIN
 const userAuthSign = new mongoose.Schema({
   username: userName,
   password: passWord,
+  firstname: firstName,
+  lastname: lastName,
+  position,
 });
 
 // HASS PASSWORD BEFORE SAVING
@@ -29,16 +34,21 @@ const section = { type: String, required: true };
 const quantity = { type: Number, required: true };
 const title = { type: String, required: true };
 const isbn = { type: Number, required: true, unique: true };
-const bookNo = { type: Number, required: true };
+const author = { type: String, required: true };
 const datePublished = { type: String, required: true };
+const dateAdded = { type: String, required: true };
+const timeAdded = { type: String, required: true };
 
 const LibrarySection = new mongoose.Schema({
   section,
   quantity,
   title,
   isbn,
-  bookNo,
+  author,
   datePublished,
+  // DATE AND TIME
+  dateAdded,
+  timeAdded,
 });
 
 // MODELS

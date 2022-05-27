@@ -22,10 +22,27 @@ export interface PropActiveBtn extends PropActiveBtn2 {
   activeTable: string;
   setActiveTable: React.Dispatch<React.SetStateAction<string>>;
 }
-export interface PropActiveBtn4 extends PropActiveBtn2 {
+
+// RETURN AND BORROW
+export interface ReturnBorrow {
+  rbIcons: {
+    borrow: boolean;
+    returnMe: boolean;
+  };
+  setRbIcons: React.Dispatch<
+    React.SetStateAction<{
+      borrow: boolean;
+      returnMe: boolean;
+    }>
+  >;
+}
+export interface PropActiveBtn4 extends PropActiveBtn2, ReturnBorrow {
   activeTable: string;
   setActiveTable: React.Dispatch<React.SetStateAction<string>>;
   addInventory: () => void;
+  sectionList: SectionList[];
+  setSectionList: React.Dispatch<React.SetStateAction<SectionList[]>>;
+  getSectionData: () => void;
   // USESTATE PROPS
   addSection: string;
   setAddSection: React.Dispatch<React.SetStateAction<string>>;
@@ -35,8 +52,8 @@ export interface PropActiveBtn4 extends PropActiveBtn2 {
   setAddBook: React.Dispatch<React.SetStateAction<string>>;
   addIsbn: number;
   setAddIsbn: React.Dispatch<React.SetStateAction<number>>;
-  addNumber: number;
-  setAddNumber: React.Dispatch<React.SetStateAction<number>>;
+  author: string;
+  setAuthor: React.Dispatch<React.SetStateAction<string>>;
   addDatePublished: string;
   setAddDatePublished: React.Dispatch<React.SetStateAction<string>>;
   addNotice: boolean;
@@ -56,8 +73,8 @@ export interface AddInventoryModalInterface {
   setAddBook: React.Dispatch<React.SetStateAction<string>>;
   addIsbn: number;
   setAddIsbn: React.Dispatch<React.SetStateAction<number>>;
-  addNumber: number;
-  setAddNumber: React.Dispatch<React.SetStateAction<number>>;
+  author: string;
+  setAuthor: React.Dispatch<React.SetStateAction<string>>;
   addDatePublished: string;
   setAddDatePublished: React.Dispatch<React.SetStateAction<string>>;
   addNotice: boolean;
@@ -70,14 +87,30 @@ export interface SectionList {
   quantity: number;
   title: string;
   isbn: number;
-  bookNo: number;
+  author: string;
   datePublished: string;
+  dateAdded: string;
+  timeAdded: string;
 }
 
-export interface PropActiveBtn5 extends PropActiveBtn2 {
+export interface PropActiveBtn5 extends PropActiveBtn2, ReturnBorrow {
   activeTable: string;
   setActiveTable: React.Dispatch<React.SetStateAction<string>>;
   sectionList: SectionList[];
+  // USESTATE PROPS
+  addSection: string;
+  setAddSection: React.Dispatch<React.SetStateAction<string>>;
+  addQuantity: number;
+  setAddQuantity: React.Dispatch<React.SetStateAction<number>>;
+  addBook: string;
+  setAddBook: React.Dispatch<React.SetStateAction<string>>;
+  addIsbn: number;
+  setAddIsbn: React.Dispatch<React.SetStateAction<number>>;
+  author: string;
+  setAuthor: React.Dispatch<React.SetStateAction<string>>;
+  addDatePublished: string;
+  setAddDatePublished: React.Dispatch<React.SetStateAction<string>>;
+  getSectionData: () => void;
 }
 
 export interface SectionQuantity {
@@ -86,14 +119,49 @@ export interface SectionQuantity {
 }
 
 // EDIT AND REMOVE MODALS
-export interface RemoveEdit {
+
+export interface RemoveEditView {
   remove: boolean;
   edit: boolean;
+  view: boolean;
 }
 
-export interface ModalsRemoveEdit {
-  modalStatus: RemoveEdit;
-  setModalStatus: React.Dispatch<React.SetStateAction<RemoveEdit>>;
+export interface TheViewModals {
+  theId: string;
+  theTitle: string;
+  theQuantity: number;
+  theIsbn: number;
+  theAuthor: string;
+  theDatePublished: string;
+  theDateAdded: string;
+  theTimeAdded: string;
+}
+
+export interface ModalsRemoveEditView_2 {
+  modalStatus: RemoveEditView;
+  setModalStatus: React.Dispatch<React.SetStateAction<RemoveEditView>>;
+  deleteId: {
+    angTitleBook: string;
+    angIdBook: string;
+    angSectionBook: string;
+  };
+  getSectionData: () => void;
+}
+export interface ModalsRemoveEditView {
+  modalStatus: RemoveEditView;
+  setModalStatus: React.Dispatch<React.SetStateAction<RemoveEditView>>;
+}
+export interface ModalsRemoveEditView2 {
+  activeTable: String;
+  modalStatus: RemoveEditView;
+  setModalStatus: React.Dispatch<React.SetStateAction<RemoveEditView>>;
+  viewModalState: TheViewModals;
+  getSectionData: () => void;
+}
+
+export interface View extends ModalsRemoveEditView {
+  activeTable: String;
+  viewModalState: TheViewModals;
 }
 
 // USERNAME AND PASSWORD HANDLE

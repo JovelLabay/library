@@ -9,6 +9,9 @@ const sign_in = async (req, res) => {
     await authentication.create({
       username: req.body.username,
       password: req.body.password,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      position: req.body.position,
     });
 
     res.json({ message: "Account has been created" });
@@ -36,6 +39,8 @@ const log_in = async (req, res) => {
       res.json({
         token: serverToken,
         message: "Account authentication successfull",
+        fullname: `${login.firstname} ${login.lastname}`,
+        position: login.position,
       });
     } else {
       res.json({ message: "Invalid either username or password" });
